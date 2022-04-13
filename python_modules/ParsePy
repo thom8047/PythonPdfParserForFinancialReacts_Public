@@ -1,0 +1,9 @@
+#!/bin/bash
+
+var=$(date)
+
+mkdir ./backups/"Transaction_$var"
+cp -i ./transaction.json ./backups/"Transaction_$var" && python ParseController.py && echo "Copied backup successfully..."
+# Putting a copy in the front-end | Might update this
+unixPath=$(cygpath -u "$1")
+cp -i ./transaction.json $unixPath/src/utils/"python_modules"/transaction.json && echo "Copied into FinancialReacts..."
